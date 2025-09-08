@@ -1,0 +1,269 @@
+:root {
+  --nav-h: 56px;
+  --bg: #2c3e50;
+  --menu: #34495e;
+  --submenu: #3b556e;
+  --text: #fff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+/* ================= NAVBAR ================= */
+.navbar {
+  height: var(--nav-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  background: var(--bg);
+  position: relative;
+  z-index: 50;
+}
+
+.logo {
+  color: var(--text);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+/* ================= MAIN MENU ================= */
+.nav-links {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+.nav-links > li {
+  position: relative;
+}
+
+/* Links and buttons look consistent */
+.nav-links a,
+.nav-links button {
+  color: var(--text);
+  padding: 14px 18px;
+  display: block;
+  text-decoration: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+  white-space: nowrap;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.nav-links a:hover,
+.nav-links button:hover {
+  background: #34495e;
+}
+
+/* ================= DROPDOWN BOXES ================= */
+.dropdown-content,
+.nested-content {
+  position: absolute;
+  display: none;
+  min-width: 220px;
+  max-width: 90vw; /* keeps menu within viewport */
+  background: var(--menu);
+  border-radius: 6px;
+  padding: 8px 0;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  z-index: 60;
+}
+
+/* Force last dropdown to align right */
+.nav-links > li:last-child .dropdown-content {
+  right: 0;
+  left: auto;
+}
+
+/* Nested menus – last one opens left */
+.nav-links > li:last-child .nested-content {
+  left: auto;
+  right: 100%;
+}
+
+.dropdown-content a,
+.nested-content a {
+  padding: 10px 14px;
+  display: block;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 15px;
+}
+
+.dropdown-content.show,
+.nested-content.show {
+  display: block;
+}
+
+/* Desktop positions */
+.dropdown > .dropdown-content {
+  top: 100%;
+  left: 0;
+}
+
+.nested-dropdown {
+  position: relative;
+}
+
+.nested-dropdown > .nested-content {
+  top: 0;
+  left: 100%;
+  background: var(--submenu);
+}
+
+/* Helpers if JS flips direction */
+.dropdown-content.align-right {
+  left: auto;
+  right: 0;
+}
+
+.nested-content.open-left {
+  left: auto;
+  right: 100%;
+}
+
+/* Divider between items */
+.dropdown-content a + a,
+.nested-content a + a {
+  margin-top: 0;
+}
+
+/* ================= HAMBURGER ================= */
+.hamburger {
+  display: none;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 10px;
+  color: var(--text);
+  font-size: 1.5rem;
+}
+
+/* ================= ARROWS ================= */
+.arrow {
+  font-size: 1.2rem;
+  margin-left: 5px;
+  transition: transform 0.3s ease;
+  display: inline-block; /* needed for transform */
+}
+
+/* Flip arrow when open */
+.nav-links button.dropdown-toggle[aria-expanded="true"] .arrow,
+.nav-links button.nested-toggle[aria-expanded="true"] .arrow {
+  transform: rotate(180deg);
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: var(--nav-h);
+    left: 0;
+    right: 0;
+    display: none;
+    flex-direction: column;
+    align-items: start;
+    background: var(--bg);
+    padding: 8px 0;
+    max-height: 80vh;
+    overflow-y: auto;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    z-index: 40;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  /* Mobile arrow flip */
+  .nav-links button.dropdown-toggle[aria-expanded="true"] .arrow,
+  .nav-links button.nested-toggle[aria-expanded="true"] .arrow {
+    transform: rotate(180deg);
+  }
+
+  /* Dropdown + nested menus stack vertically */
+  .dropdown-content,
+  .nested-content {
+    position: relative;
+    top: 0;
+    left: 0 !important;
+    right: auto;
+    box-shadow: none;
+    border-radius: 0;
+    background: var(--menu);
+    width: 100%;
+    min-width: 0;
+    padding: 0;
+  }
+
+  /* Ensure nested links are white */
+  .nested-content a {
+    color: var(--text);
+  }
+
+  /* Dropdown toggle full width */
+  .dropdown-toggle,
+  .nested-toggle {
+    color: var(--text);
+    width: 100%;
+    display: block;
+    padding: 14px 18px;
+    background: transparent;
+    text-align: left;
+  }
+
+  /* Indent anchors inside dropdown */
+  .dropdown-content a {
+    padding-left: 24px;
+    color: var(--text);
+  }
+
+  /* Nested content deeper indent */
+  .nested-dropdown > .nested-content {
+    background: var(--submenu);
+    left: 0;
+  }
+
+  .nested-dropdown > .nested-content a {
+    padding-left: 40px;
+    color: var(--text);
+  }
+
+  /* Improve readability */
+  .dropdown-content a,
+  .nested-content a {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* Allow wrapping text */
+  .nav-links a,
+  .nav-links button {
+    white-space: normal;
+  }
+}
+
+/* ================= UTILITY ================= */
+.divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.04);
+  margin: 6px 0;
+}

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Navbar — fixed nested mobile text + arrows</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+        integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <nav class="navbar">
+        <a class="logo" href="#">MyCompany</a>
+
+        <button id="hamburger" class="hamburger" aria-controls="navLinks" aria-expanded="false"
+            aria-label="Toggle menu">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <ul class="nav-links" id="navLinks" role="menu">
+            <li><a href="#">Home</a></li>
+
+            <li class="dropdown">
+                <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">Products <i
+                        class="fa-solid fa-caret-down arrow"></i></button>
+                <div class="dropdown-content" role="menu">
+                    <a href="#">Laptops</a>
+                    <a href="#">Smartphones</a>
+
+                    <div class="nested-dropdown">
+                        <button class="nested-toggle" aria-haspopup="true" aria-expanded="false">Accessories <i
+                                class="fa-solid fa-caret-down arrow"></i></button>
+                        <div class="nested-content" role="menu">
+                            <a href="#">Chargers</a>
+                            <a href="#">Headphones</a>
+                            <a href="#">Covers</a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+            <li class="dropdown">
+                <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">Services <i
+                        class="fa-solid fa-caret-down arrow"></i></button>
+                <div class="dropdown-content" role="menu">
+                    <a href="#">Consulting</a>
+                    <a href="#">Cloud Hosting</a>
+                    <a href="#">Software Development</a>
+                </div>
+            </li>
+
+            <li><a href="#">About Us</a></li>
+
+            <li class="dropdown">
+                <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">Account <i
+                        class="fa-solid fa-caret-down arrow"></i></button>
+                <div class="dropdown-content" role="menu">
+                    <a href="#">Login</a>
+                    <a href="#">Register</a>
+                    <a href="#">Profile</a>
+
+                    <div class="nested-dropdown">
+                        <button class="nested-toggle" aria-haspopup="true" aria-expanded="false">OAuth <i
+                                class="fa-solid fa-caret-down arrow"></i></button>
+                        <div class="nested-content" role="menu">
+                            <a href="#">Google</a>
+                            <a href="#">Facebook</a>
+                            <a href="#">Github</a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
