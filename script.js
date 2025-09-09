@@ -63,6 +63,7 @@ function adjustDropdownPosition(menu) {
 
   // If it's a first-level dropdown
   if (menu.classList.contains("dropdown-content")) {
+    // getBoundingClientRect() gives the menu’s position and size relative to the viewport (top, left, right, bottom).
     const rect = menu.getBoundingClientRect(); // get position on screen
     if (rect.right > window.innerWidth - buffer) {
       menu.classList.add("align-right"); // move left
@@ -115,6 +116,8 @@ document.querySelectorAll(".dropdown-toggle").forEach((btn) => {
     });
 
     // Toggle this menu
+    // willOpen true it will open dropdown
+    // willOpen false it will close dropdown
     menu.classList.toggle("show", willOpen);
     btn.setAttribute("aria-expanded", String(willOpen));
 

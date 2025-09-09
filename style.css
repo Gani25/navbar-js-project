@@ -62,6 +62,7 @@ body {
   white-space: nowrap;
   font-size: 1rem;
   line-height: 1.4;
+  transition: all 0.5s ease-in-out;
 }
 
 .nav-links a:hover,
@@ -84,10 +85,10 @@ body {
 }
 
 /* Force last dropdown to align right */
-.nav-links > li:last-child .dropdown-content {
+/* .nav-links > li:last-child .dropdown-content {
   right: 0;
   left: auto;
-}
+} */
 
 /* Nested menus – last one opens left */
 .nav-links > li:last-child .nested-content {
@@ -170,7 +171,7 @@ body {
 /* ================= MOBILE ================= */
 @media (max-width: 768px) {
   .hamburger {
-    display: flex;
+    display: block;
   }
 
   .nav-links {
